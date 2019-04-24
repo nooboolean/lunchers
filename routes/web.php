@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => ['web']], function () {
+    //Twitter
+    Route::get('oauth/twitter', 'OAuthLoginController@getAuth');
+    Route::get('oauth/callback/twitter', 'OAuthLoginController@authCallback');
+    //Facebook
+    Route::get('oauth/facebook', 'OAuthLoginController@getAuth');
+    Route::get('oauth/callback/facebook', 'OAuthLoginController@authCallback');
+    //Google
+    Route::get('oauth/google', 'OAuthLoginController@getAuth');
+    Route::get('oauth/callback/google', 'OAuthLoginController@authCallback');
+});
+
+// //Twitter
+// Route::get('oauth/twitter', 'OAuthLoginController@getAuth');
+// Route::get('oauth/callback/twitter', 'OAuthLoginController@authCallback');
+
+// //Facebook
+// Route::get('oauth/facebook', 'OAuthLoginController@getAuth');
+// Route::get('oauth/callback/facebook', 'OAuthLoginController@authCallback');

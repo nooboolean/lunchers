@@ -35,4 +35,25 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    /**
+     * socialite Settings
+     */
+    'twitter' => [
+        'client_id'     => env('TWITTER_API_KEY'),
+        'client_secret' => env('TWITTER_API_SECRET'),
+        'redirect'      => env('TWITTER_CALLBACKURL'),
+    ],
+
+    'facebook' => [
+        'client_id'     => env('FACEBOOK_API_ID'),
+        'client_secret' => env('FACEBOOK_API_SECRET'),
+        'redirect'      => env('FACEBOOK_CALLBACKURL'),
+      ],
+
+    'google' => [
+        'client_id'     => env('GOOGLEPLUS_API_ID'),
+        'client_secret' => env('GOOGLEPLUS_API_SECRET'),
+        'redirect'      => env('GOOGLEPLUS_CALLBACKURL'),
+    ],
+
 ];
