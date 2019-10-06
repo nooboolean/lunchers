@@ -11,20 +11,30 @@
 |
 */
 
-//Twitter
-Route::get('oauth/twitter', 'OAuthLoginController@getAuth');
-Route::get('oauth/callback/twitter', 'OAuthLoginController@authCallback');
-//Facebook
-Route::get('oauth/facebook', 'OAuthLoginController@getAuth');
-Route::get('oauth/callback/facebook', 'OAuthLoginController@authCallback');
-//Google
-Route::get('oauth/google', 'OAuthLoginController@getAuth');
-Route::get('oauth/callback/google', 'OAuthLoginController@authCallback');
+Route::get('/', 'TopController@index');
 
-// //Twitter
-// Route::get('oauth/twitter', 'OAuthLoginController@getAuth');
-// Route::get('oauth/callback/twitter', 'OAuthLoginController@authCallback');
+Route::group(['middleware' => ['nakazaway.auth']], function(){
+  Route::get('logout', 'LogoutController@logout');
+});
 
-// //Facebook
-// Route::get('oauth/facebook', 'OAuthLoginController@getAuth');
-// Route::get('oauth/callback/facebook', 'OAuthLoginController@authCallback');
+Route::group(['middleware' => ['redirect.top']], function(){
+  Route::get('regist', 'RegistController@index');
+  Route::post('regist', [
+      'uses' => 'RegistController@create',
+      'as' => 'regist.create'
+  ]);
+  Route::get('login', 'LoginController@index');
+  Route::post('login', [
+    'uses' => 'LoginController@login',
+    'as' => 'login.login'
+  ]);
+  //Twitter
+  Route::get('sns/twitter', 'TwitterController@getAuth');
+  Route::get('sns/callback/twitter', 'TwitterController@authCallback');
+  Route::get('sns/twitter/regist', 'TwitterController@snsRegist');
+  //Google
+  Route::get('sns/google', 'GoogleController@getAuth');
+  Route::get('sns/callback/google', 'GoogleController@authCallback');
+
+  Route::get('sns/regist', 'SnsRegistController@index');
+});
