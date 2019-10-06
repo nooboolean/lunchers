@@ -6,8 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "doctrine/dbal": "^2.9",
         "fideloper/proxy": "~3.3",
+        "intervention/image": "^2.4",
+        "kris/laravel-form-builder": "^1.20",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.3",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {

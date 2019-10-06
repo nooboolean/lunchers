@@ -164,6 +164,21 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        /**
+         * Socialite
+         */
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /**
+         * FormBuilder
+         */
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+
+        /**
+         * ImageService
+         */
+        Intervention\Image\ImageServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -225,7 +240,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
